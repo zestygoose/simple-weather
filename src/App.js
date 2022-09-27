@@ -8,7 +8,7 @@ function App() {
   const [minutely, setMinutely] = useState([]);
   const [timezone, setTimezone] = useState();
   const [offset, setOffset] = useState();
-  // eslint-disable-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
   const [hourly, setHourly] = useState();
 
 
@@ -24,6 +24,7 @@ function App() {
     getWeather();
     // getWeatherTest();
 
+    // eslint-disable-next-line
   }, [position])
 
   const getWeather = async() => {
@@ -47,6 +48,7 @@ function App() {
     }
   }
 
+  // eslint-disable-next-line
   const getWeatherTest = async() => {
     const response = await fetch('weather-data.json',{
       headers: {
