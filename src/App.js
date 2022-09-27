@@ -31,6 +31,8 @@ function App() {
   }, [position])
 
   const getWeather = async () => {
+    console.log('Key?', key);
+
     if (!position || !key)
       return;
 
