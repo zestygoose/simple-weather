@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react'
 function App() {
   const [current, setCurrent] = useState();
   const [daily, setDaily] = useState();
-  const [hourly, setHourly] = useState();
+  // const [hourly, setHourly] = useState();
   const [minutely, setMinutely] = useState([]);
   const [timezone, setTimezone] = useState();
   const [offset, setOffset] = useState();
@@ -22,10 +22,11 @@ function App() {
   useEffect(() => {
     getWeather();
     // getWeatherTest();
+
+    // eslint-disable-line react-hooks/exhaustive-deps
   }, [position])
 
   const getWeather = async() => {
-    console.log(position, key)
     if (!position || !key)
       return; 
 
@@ -39,7 +40,7 @@ function App() {
 
       setCurrent(current);
       setDaily(daily);
-      setHourly(hourly);
+      // setHourly(hourly);
       setMinutely(minutely);
       setTimezone(timezone);
       setOffset(timezone_offset/3600);
@@ -60,7 +61,7 @@ function App() {
 
       setCurrent(current);
       setDaily(daily);
-      setHourly(hourly);
+      // setHourly(hourly);
       setMinutely(minutely);
       setTimezone(timezone);
       setOffset(timezone_offset/3600);
@@ -83,7 +84,7 @@ function App() {
           <section className=''>
             <div className='flex justify-center'>
               <div className=''>
-                <img className='w-24 h-24' src={"http://openweathermap.org/img/w/" + current?.weather[0]?.icon + ".png"}></img>
+                <img className='w-24 h-24' alt='' src={"http://openweathermap.org/img/w/" + current?.weather[0]?.icon + ".png"}></img>
               </div>
               <div className='' style={{fontSize: "64px"}}>{celsius(current?.temp)}&deg;C</div>
               {/* <div>
@@ -119,7 +120,7 @@ function App() {
                 return (
                 <div key={i} className='p-4 hover:bg-red-500 rounded-lg cursor-pointer'>
                   <div className='text-center'>{day(d.dt)}</div>
-                  <img src={"http://openweathermap.org/img/w/" + d?.weather[0]?.icon + ".png"}></img>
+                  <img alt='' src={"http://openweathermap.org/img/w/" + d?.weather[0]?.icon + ".png"}></img>
                   <div className='text-center'>{celsius(d.temp.max)}&deg;C</div>
                   <div className='text-center'>{celsius(d.temp.min)}&deg;C</div>
                 </div>
@@ -153,6 +154,7 @@ function day(epoch) {
     case 4: return 'Thu'
     case 5: return 'Fri'
     case 6: return 'Sat'
+    default:
   }
 }
 
