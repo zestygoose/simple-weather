@@ -34,9 +34,13 @@ function App() {
     const lat = position.coords.latitude;
     const long = position.coords.longitude;
 
+    console.log(`Request: https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${key}`);
+
     var response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${key}`);
 
     if (response?.data) {
+      console.log('Response: ' + response)
+
       const {current, daily, hourly, minutely, timezone, timezone_offset} = response.data;
 
       setCurrent(current);
