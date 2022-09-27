@@ -5,10 +5,11 @@ import React, { useState, useEffect } from 'react'
 function App() {
   const [current, setCurrent] = useState();
   const [daily, setDaily] = useState();
-  // const [hourly, setHourly] = useState();
   const [minutely, setMinutely] = useState([]);
   const [timezone, setTimezone] = useState();
   const [offset, setOffset] = useState();
+  // eslint-disable-line react-hooks/exhaustive-deps
+  const [hourly, setHourly] = useState();
 
 
   const [position, setPosition] = useState();
@@ -23,7 +24,6 @@ function App() {
     getWeather();
     // getWeatherTest();
 
-    // eslint-disable-line react-hooks/exhaustive-deps
   }, [position])
 
   const getWeather = async() => {
@@ -40,7 +40,7 @@ function App() {
 
       setCurrent(current);
       setDaily(daily);
-      // setHourly(hourly);
+      setHourly(hourly);
       setMinutely(minutely);
       setTimezone(timezone);
       setOffset(timezone_offset/3600);
@@ -57,11 +57,12 @@ function App() {
 
     if (response) {
       const data = await response.json();
+
       const {current, daily, hourly, minutely, timezone, timezone_offset} = data;
 
       setCurrent(current);
       setDaily(daily);
-      // setHourly(hourly);
+      setHourly(hourly);
       setMinutely(minutely);
       setTimezone(timezone);
       setOffset(timezone_offset/3600);
